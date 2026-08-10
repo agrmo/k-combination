@@ -1,0 +1,3 @@
+TARGET_SOURCES(main PRIVATE
+  Enum.h
+)
