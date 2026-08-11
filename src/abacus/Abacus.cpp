@@ -23,9 +23,18 @@ bool Abacus::canmoveright(int b) {
     throw std::runtime_error("Abacus: b not a bead index.");
   }
 
-  // If there is any bead to the right of b, return false.
+  // Get the location of the bead.
+  int loc = beads -> at(b);
+
+  // If the bead is at the end, return false.
+  if (loc + 1 >= size) {
+    return false;
+  }
+
+  // If the location + 1 of bead b is equal to the location of another
+  // bead, return false.
   for (int i = 0; i < beads -> size(); i++) {
-    if (beads -> at(i) == (b+1)) {
+    if (beads -> at(i) == loc + 1) {
       return false;
     }
   }
@@ -36,8 +45,6 @@ bool Abacus::canmoveright(int b) {
 void Abacus::moveright(int b) {
   if (!canmoveright(b)) {
     throw std::runtime_error("Abacus: cannot move right.");
-  } else if (b + 1 >= size) {
-    throw std::runtime_error("Abacus: bead already at end (or beyond).");
   }
 
   beads -> at(b) += 1;

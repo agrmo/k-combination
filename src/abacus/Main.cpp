@@ -13,12 +13,37 @@ void exampletwo() {
 
   std::cout << a -> canmoveright(0) << "\n"; // no
   std::cout << a -> canmoveright(1) << "\n"; // no
-  std::cout << a -> canmoveright(2) << "\n"; // no
+  std::cout << a -> canmoveright(2) << "\n"; // yes
   
   printabacus(a);
   delete a;
 }
 
+void examplethree() {
+  Abacus* a = new Abacus(5, 3);
+
+  a -> moveright(2);
+
+  printabacus(a);
+  
+  a -> moveright(1);
+
+  printabacus(a);
+  
+  a -> moveright(0);
+
+  printabacus(a);
+
+  a -> moveright(2);
+  a -> moveright(1);
+  a -> moveright(0);
+  
+  printabacus(a);
+
+  delete a;
+}
+
+
 int main() {
-  exampletwo();
+  examplethree();
 }
