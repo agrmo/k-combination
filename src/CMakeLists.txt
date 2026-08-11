@@ -13,7 +13,8 @@ SET(dirs array city ciudad stadt addone class
   kette print twosum quicksort swap
   combine vector graph matrix
   reference comb pairlist
-  independentset combinatoric)
+  independentset combinatoric combinationabacus
+  abacus)
 
 FOREACH(dir ${dirs})
     ADD_SUBDIRECTORY(${dir})
@@ -21,5 +22,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  print/matrix/Main.cpp
+  abacus/Main.cpp
 )

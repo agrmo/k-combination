@@ -2,6 +2,11 @@
 #include <vector>
 #include "Vectorprint.h"
 
+void vectorprint(std::vector<int>* listptr) {
+  std::vector<int> list = *listptr;
+  vectorprint(list);
+}
+
 void vectorprint(std::vector<int> list) {
 
   std::cout << "[";

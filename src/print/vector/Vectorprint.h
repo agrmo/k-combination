@@ -3,6 +3,8 @@
 
 #include <vector>
 
+void vectorprint(std::vector<int>* list);
+
 void vectorprint(std::vector<int> list);
 
 #endif

@@ -13,13 +13,11 @@ void beispieleins() {
 void beispielzwei() {
   std::cout << "1 choose 1 = " << pchooseq(1, 1) << "\n";
   std::cout << "2 choose 1 = " << pchooseq(2, 1) << "\n";
-}
-
-void beispieldrei() {
-  Matrix* m = getcombinations(1, 1);
-  printmatrix(m);
+  std::cout << "3 choose 1 = " << pchooseq(3, 1) << "\n";
+  std::cout << "3 choose 2 = " << pchooseq(3, 2) << "\n";
+  std::cout << "4 choose 3 = " << pchooseq(4, 3) << "\n";
 }
 
 int main() {
-  beispieldrei();
+  beispielzwei();
 }
