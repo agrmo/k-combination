@@ -49,10 +49,11 @@ public:
   ~Abacus();
 
   // Can the bth bead move right?
+  // b is the index of beads, not the location of the bead.
   bool canmoveright(int b);
 
-  // Move the bth bead to the right by the amount.
-  void moveright(int b, int amount);
+  // Move the bth bead to the right.
+  void moveright(int b);
 };
 
 #endif

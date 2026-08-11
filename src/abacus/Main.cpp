@@ -10,10 +10,15 @@ void exampleone() {
 
 void exampletwo() {
   Abacus* a = new Abacus(5, 3);
+
+  std::cout << a -> canmoveright(0) << "\n"; // no
+  std::cout << a -> canmoveright(1) << "\n"; // no
+  std::cout << a -> canmoveright(2) << "\n"; // no
+  
   printabacus(a);
   delete a;
 }
 
 int main() {
-  exampleone();
+  exampletwo();
 }

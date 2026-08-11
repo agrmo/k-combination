@@ -19,7 +19,12 @@ Abacus::~Abacus() {
 }
 
 bool Abacus::canmoveright(int b) {
-  for (int i = 0; i < size; i++) {
+  if (b >= beads -> size()) {
+    throw std::runtime_error("Abacus: b not a bead index.");
+  }
+
+  // If there is any bead to the right of b, return false.
+  for (int i = 0; i < beads -> size(); i++) {
     if (beads -> at(i) == (b+1)) {
       return false;
     }
@@ -28,12 +33,12 @@ bool Abacus::canmoveright(int b) {
   return true;
 }
 
-void Abacus::moveright(int b, int amount) {
+void Abacus::moveright(int b) {
   if (!canmoveright(b)) {
     throw std::runtime_error("Abacus: cannot move right.");
-  } else if (b + amount >= size) {
+  } else if (b + 1 >= size) {
     throw std::runtime_error("Abacus: bead already at end (or beyond).");
   }
 
-  beads -> at(b) += amount;
+  beads -> at(b) += 1;
 }
