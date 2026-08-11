@@ -43,8 +43,9 @@ public:
   int size;
   std::vector<int>* beads;
 
-  // When given just the size, all beads are initialized on the left.
-  Abacus(int size);
+  // Make an Abacus with s positions and b number of beads. Put all
+  // the beads on the left first.
+  Abacus(int s, int b);
   ~Abacus();
 
   // Can the bth bead move right?

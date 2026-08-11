@@ -5,7 +5,7 @@
 
 void printabacus(Abacus* abacus) {
 
-  std::cout << "Abacus: Size: " << abacus -> size << "\n";
+  std::cout << "Abacus: Size: " << abacus -> size << " (max bead = " << abacus -> size - 1 << ")\n";
 
   std::cout << "        Beads: ";
   

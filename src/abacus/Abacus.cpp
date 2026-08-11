@@ -3,12 +3,12 @@
 #include <vector>
 #include <stdexcept>
 
-Abacus::Abacus(int s) {
+Abacus::Abacus(int s, int b) {
   size = s;
   
-  beads = new std::vector<int>(size);
+  beads = new std::vector<int>(b);
 
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < b; i++) {
     beads -> at(i) = i;
   }
 }
