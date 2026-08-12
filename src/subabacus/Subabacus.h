@@ -2,6 +2,7 @@
 #define SUBABACUS_H
 
 #include "abacus/Abacus.h"
+#include <vector>
 
 // A Subabacus is similar to an Abacus except its beads are pointers
 // to the parent's beads. The size is smaller than the parent's size,
@@ -20,7 +21,7 @@ public:
 
   int size;
 
-  // c.f. Abacus: std::vector<int>*
+  // c.f. Abacus: beads: std::vector<int>*
   std::vector<int*>* beads;
 
   // Construct a Subabacus given the parent Abacus, by making pointers
@@ -29,7 +30,7 @@ public:
   // size will not be added to this Subabacus. We are effectively
   // truncating the Abacus at a position, and then making its beads
   // point to a parent's beads.
-  Subabacus(int s, Abacus* a);
+  Subabacus(int s, std::vector<int*>* b);
   ~Subabacus();
 
   // Can the bth bead move right?

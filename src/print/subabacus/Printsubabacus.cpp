@@ -5,24 +5,25 @@
 
 void printsubabacus(Subabacus* sa) {
 
-  // std::cout << "Subabacus: Size: " << sa -> size << " (max bead = " << sa -> size - 1 << ")\n";
+  int size = sa -> size;
+  std::cout << "Subabacus: Size: " << size << " (max bead = " << size - 1 << ")\n";
 
-  // std::cout << "        Beads: ";
-  // vectorprint(abacus -> beads);
+  std::cout << "        Beads: ";
+  pointervectorprint(sa -> beads);
 
-  // std::cout << "        Can move right: [";
+  std::cout << "        Can move right: [";
 
-  // for (int i = 0; i < abacus -> beads -> size(); i++) {
-  //   if (i != 0) {
-  //     std::cout << ", ";
-  //   }
+  for (int i = 0; i < sa -> beads -> size(); i++) {
+    if (i != 0) {
+      std::cout << ", ";
+    }
     
-  //   if (abacus -> canmoveright(i)) {
-  //     std::cout << "yes";
-  //   } else {
-  //     std::cout << "no";
-  //   }
-  // }
+    if (sa -> canmoveright(i)) {
+      std::cout << "yes";
+    } else {
+      std::cout << "no";
+    }
+  }
 
-  // std::cout << "]\n";
+  std::cout << "]\n";
 }

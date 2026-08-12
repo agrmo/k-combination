@@ -9,12 +9,16 @@ ADD_EXECUTABLE(main)
 TARGET_INCLUDE_DIRECTORIES(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Add source files.
-SET(dirs array city ciudad stadt addone class
-  kette print twosum quicksort swap
-  combine vector graph matrix
-  reference comb pairlist
-  independentset combinatoric combinationabacus
-  abacus)
+SET(dirs addone twosum
+  city ciudad stadt class
+  array vector
+  kette print quicksort swap
+  combine graph matrix
+  reference
+  comb pairlist
+  combinatoric
+  independentset
+  abacus subabacus combinationabacus)
 
 FOREACH(dir ${dirs})
     ADD_SUBDIRECTORY(${dir})
@@ -22,5 +26,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  print/pointervector/Main.cpp
+  subabacus/factory/Main.cpp
 )

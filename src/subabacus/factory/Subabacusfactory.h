@@ -2,7 +2,7 @@
 #define SUBABACUSFACTORY_H
 
 #include "abacus/Abacus.h"
-#include "Subabacus.h"
+#include "subabacus/Subabacus.h"
 
 // Given an Abacus, make a Subabacus by truncating the terminal bead.
 //

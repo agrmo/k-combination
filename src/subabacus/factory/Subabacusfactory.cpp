@@ -1,5 +1,6 @@
 #include "abacus/Abacus.h"
-#include "Subabacus.h"
+#include "subabacus/Subabacus.h"
+#include "Subabacusfactory.h"
 #include <vector>
 
 Subabacus* truncateterminal(Abacus* a) {
@@ -19,7 +20,7 @@ Subabacus* truncateterminal(Abacus* a) {
 
   for (int i = 0; i < a -> beads -> size(); i++) {
     if (a -> beads -> at(i) < size) {
-      beads -> push_back(a -> beads -> at(i));
+      beads -> push_back(&(a -> beads -> at(i)));
     }
   }
 
@@ -28,6 +29,8 @@ Subabacus* truncateterminal(Abacus* a) {
   Subabacus* sa = new Subabacus(size, beads);
 
   // Note needs delete.
+
+  return sa;
 }
 
 // Subabacus* truncateterminal(Subabacus* saa) {

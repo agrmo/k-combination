@@ -1,28 +1,20 @@
 
-#include <iostream>
-#include <vector>
-#include <stdexcept>
+#include "Subabacus.h"
 #include "abacus/Abacus.h"
+#include <iostream>
+#include <stdexcept>
+#include <vector>
 
-Subabacus::Subabacus(int s, Abacus* a) {
-  
-  // I don't think we need to store the pointer.
-  size = s;
+// Only the factory builds Subabaci so we just need a simple
+// constructor for now.
+Subabacus::Subabacus(int s, std::vector<int*>* b) {
 
-  // We don't know how many beads are in the parent Abacus yet. Parse
-  // that now. We will store at most s beads.
-  beads = new std::vector<int*>(0);
-
-  // For each bead in the parent, if its index is below s, then it
-  // will also be in this Subabacus. Store it.
-  for (int i = 0; i < a -> beads -> size(); i++) {
-
-    if (a -> beads -> at(i) < s) {
-      
-      // wowzers
-      beads -> push_back(a -> beads -> at(i));
-    }
+  if (b -> size() > s) {
+    throw std::runtime_error("Given more beads than size of Subabacus.");
   }
+  
+  size = s;
+  beads = b;
 }
 
 Subabacus::~Subabacus() {
@@ -36,7 +28,7 @@ bool Subabacus::canmoveright(int b) {
   }
 
   // Get the location of the bead.
-  int loc = beads -> at(b);
+  int loc = *(beads -> at(b));
 
   // If the bead is at the end, return false.
   if (loc + 1 >= size) {
@@ -46,7 +38,7 @@ bool Subabacus::canmoveright(int b) {
   // If the location + 1 of bead b is equal to the location of another
   // bead, return false.
   for (int i = 0; i < beads -> size(); i++) {
-    if (beads -> at(i) == loc + 1) {
+    if (*(beads -> at(i)) == loc + 1) {
       return false;
     }
   }
@@ -59,5 +51,5 @@ void Subabacus::moveright(int b) {
     throw std::runtime_error("Subabacus: cannot move right.");
   }
 
-  beads -> at(b) += 1;
+  *(beads -> at(b)) += 1;
 }
