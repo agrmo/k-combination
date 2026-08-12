@@ -27,5 +27,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  pueblo/Main.cpp
+  combinatoricabacus/Main.cpp
 )

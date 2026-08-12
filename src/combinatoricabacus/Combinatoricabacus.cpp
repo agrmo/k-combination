@@ -9,51 +9,65 @@
 #include "subabacus/factory/Subabacusfactory.h"
 #include <iostream>
 
-// Populate the next found combination with the beads: the parent
-// abacus beads. Always length q.
-void savecombination(Matrixfactory* mf,
-		     std::vector<int>* beads) {
-
-  mf -> fillnextrow(beads);
-}
-
-// Same thing, now just for int references.
-void savecombination(Matrixfactory* mf,
-		     std::vector<int*>* beads) {
-
-  mf -> fillnextrow(beads);
-}
+// The next two functions call eachother mutually.
+// In order to do that, we need a forward declaration.
+void subabacusgetcombinations(Subabacus* subabacus,
+			      Matrixfactory* mf);
 
 // Interestingly we need to repeat this step in the recursive
 // algorithm twice. No way around it I suppose. We'll just make a
 // function to factor the code a little.
-void subabacuscheckrecursion(Subabacus* subabacusparent,
+void subabacuscheckrecursion(Subabacus* subabacus,
 			     Matrixfactory* mf) {
-  
-  if (subabacusparent -> numberofbeads() > 1) {
-    Subabacus* subabacuschild = truncateterminal(subabacusparent);
-    
-    // subabacusgetcombinations(subabacuschild, mf);
+
+  std::cout << "check recursion\n";
+
+  if (subabacus -> numberofbeads() > 1) {
+    Subabacus* subabacuschild = truncateterminal(subabacus);
+
+    // Now we recurse but this time with one less bead.
+    subabacusgetcombinations(subabacuschild, mf);
   }
 }
 
-void subabacusgetcombinations(Subabacus* subabacusparent,
+void subabacusgetcombinations(Subabacus* subabacus,
 			      Matrixfactory* mf) {
 
   // The logic is completely identical to the parent Abacus.
   // Just the underlying data structure is a little different.
 
-  while (subabacusparent -> terminalcanmoveright()) {
+  while (subabacus -> terminalcanmoveright()) {
 
-    // This can recurse.
-    subabacuscheckrecursion(subabacusparent, mf);
+    std::cout << "while child " << subabacus -> size << "\n";
+
+    // This may recurse.
+    subabacuscheckrecursion(subabacus, mf);
 
     // Move right and save.
-    subabacusparent -> moveterminalright();
-    savecombination(mf, subabacusparent -> parentbeads);
+    subabacus -> moveterminalright();
+    mf -> fillnextrow(subabacus -> parentbeads);
 
-    // This can also recurse.
-    subabacuscheckrecursion(subabacusparent, mf);
+    // This may recurse.
+    subabacuscheckrecursion(subabacus, mf);
+  }
+}
+
+// Check if the Abacus needs to make a Subabacus and recurse into the
+// smaller Abacus. In this case we don't need a forward
+// declaration. The two Subabaci functions on the other hand are
+// circular and require a forward declaration.
+void abacuscheckrecursion(Abacus* abacus, Matrixfactory* mf) {
+  if (abacus -> numberofbeads() > 1) {
+
+    // Make a new Abacus truncated at the terminal bead.  The
+    // unoccupied locations before the terminal bead are still
+    // included.
+    Subabacus* sa = truncateterminal(abacus);
+
+    // Call a recursive algorithm. This function will count the
+    // combinations of the smaller abacus and add the combinations
+    // to the matrix, while also appending the parent abacus' beads.
+    subabacusgetcombinations(sa, mf);
   }
 }
 
@@ -88,23 +102,23 @@ Matrix* getcombinations(int p, int q) {
 
   // Save initial combination.
 
-  // savecombination(mf, parent.beads);
+  mf.fillnextrow(parent.beads);
 
   // Start the recursive loop.
 
   while (parent.terminalcanmoveright()) {
-    if (parent.numberofbeads() > 1) {
 
-      // Make a new Abacus truncated at the terminal bead.  The
-      // unoccupied locations before the terminal bead are still
-      // included.
-      Subabacus* sa = truncateterminal(&parent);
+    std::cout << "while parent " << parent.size << "\n";
 
-      // Call a recursive algorithm. This function will count the
-      // combinations of the smaller abacus and add the combinations
-      // to the matrix, while also appending the parent abacus' beads.
-      // subabacusgetcombinations(sa, mf);
-    }
+    abacuscheckrecursion(&parent, &mf);
+
+    // After the possible recursion (there could be no recursion)
+    // move and then save the resulting combination.
+    parent.moveterminalright();
+    mf.fillnextrow(parent.beads);
+
+    // Run the check statement exactly again.
+    abacuscheckrecursion(&parent, &mf);
   }
   
   return mf.matrix;

@@ -4,7 +4,8 @@
 #include "print/matrix/Printmatrix.h"
 
 void exampleone() {
-  Matrix* matrix = getcombinations(4, 3);
+  Matrix* matrix = getcombinations(3, 2);
+  printmatrix(matrix);
 }
 
 int main() {
