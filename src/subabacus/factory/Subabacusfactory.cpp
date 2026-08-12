@@ -26,7 +26,7 @@ Subabacus* truncateterminal(Abacus* parent) {
 
   // Done. Build the Subabacus.
 
-  Subabacus* child = new Subabacus(size, beads);
+  Subabacus* child = new Subabacus(size, beads, parent -> beads);
 
   // Note needs delete.
 
@@ -60,7 +60,7 @@ Subabacus* truncateterminal(Subabacus* parent) {
     }
   }
   
-  Subabacus* child = new Subabacus(size, beads);
+  Subabacus* child = new Subabacus(size, beads, parent -> parentbeads);
 
   // Note needs delete.
 

@@ -42,6 +42,10 @@ bool Abacus::canmoveright(int b) {
   return true;
 }
 
+int Abacus::numberofbeads() {
+  return beads -> size();
+}
+
 void Abacus::moveright(int b) {
   if (!canmoveright(b)) {
     throw std::runtime_error("Abacus: cannot move right.");
@@ -49,3 +53,4 @@ void Abacus::moveright(int b) {
 
   beads -> at(b) += 1;
 }
+

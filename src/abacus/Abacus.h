@@ -56,6 +56,9 @@ public:
   Abacus(int s, int b);
   ~Abacus();
 
+  // Return number of beads.
+  int numberofbeads();
+
   // Can the bth bead move right?
   // b is the index of beads, not the location of the bead.
   bool canmoveright(int b);

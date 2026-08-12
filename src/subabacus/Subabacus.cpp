@@ -6,7 +6,8 @@
 
 // Only the factory builds Subabaci so we just need a simple
 // constructor for now.
-Subabacus::Subabacus(int s, std::vector<int*>* b) {
+Subabacus::Subabacus(int s, std::vector<int*>* b,
+		     std::vector<int>* pb) {
 
   if (b -> size() > s) {
     throw std::runtime_error("Given more beads than size of Subabacus.");
@@ -14,11 +15,16 @@ Subabacus::Subabacus(int s, std::vector<int*>* b) {
   
   size = s;
   beads = b;
+  parentbeads = pb;
 }
 
 Subabacus::~Subabacus() {
   std::cout << "Deleting Subabacus size " << size << "\n";
   delete beads;
+}
+
+int Subabacus::numberofbeads() {
+  return beads -> size();
 }
 
 bool Subabacus::canmoveright(int b) {
