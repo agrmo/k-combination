@@ -3,19 +3,31 @@
 #include "combinatoric/Combinatoric.h"
 #include "Combinationabacus.h"
 #include "abacus/Abacus.h"
+#include "print/matrix/Printmatrix.h"
+#include "print/vector/Printvector.h"
+#include <iostream>
 
 // Populate the next found combination with the
 // beads: the parent abacus beads. Always length q.
 void populatenextrow(Matrix* matrix,
 		     std::vector<int>* beads,
-		     int nextrow) {
+		     int* nextrow) {
+
+  std::cout << "Saving combination at row " << *nextrow << ": ";
+  printvector(beads);
 
   // We will need to copy each integer over.
   // matrix -> cols equals beads -> length()
   // We have no idea what nextrow is, except that it's less than pCq.
   for (int i = 0; i < matrix -> cols; i++) {
-    matrix -> set(nextrow, i, beads -> at(i));
+    matrix -> set(*nextrow, i, beads -> at(i));
   }
+
+  std::cout << "matrix is now \n";
+  printmatrix(matrix);
+
+  *nextrow += 1;
+  std::cout << "nextrow is now " << *nextrow << "\n";
 }
 
 // Complexity analysis: O(p!) where p is the size of the set.
@@ -48,6 +60,10 @@ Matrix* getcombinations(int p, int q) {
   // The beads are initialized on the left.
 
   // Start the recursive algorithm.
+
+  // Save initial combination.
+
+  populatenextrow(matrix, parent.beads, &nextrow);
 
   return matrix;
 }

@@ -1,6 +1,6 @@
 #include "Printsubabacus.h"
 #include "subabacus/Subabacus.h"
-#include "print/pointervector/Pointervectorprint.h"
+#include "print/pointervector/Printpointervector.h"
 #include <iostream>
 
 void printsubabacus(Subabacus* sa) {
@@ -9,7 +9,7 @@ void printsubabacus(Subabacus* sa) {
   std::cout << "Subabacus: Size: " << size << " (max bead = " << size - 1 << ")\n";
 
   std::cout << "        Beads: ";
-  pointervectorprint(sa -> beads);
+  printpointervector(sa -> beads);
 
   std::cout << "        Can move right: [";
 

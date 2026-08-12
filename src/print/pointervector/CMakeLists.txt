@@ -1,4 +1,4 @@
 TARGET_SOURCES(main PRIVATE
-  Pointervectorprint.cpp
-  Pointervectorprint.h
+  Printpointervector.cpp
+  Printpointervector.h
 )

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
-#include "print/vector/Vectorprint.h"
+#include "print/vector/Printvector.h"
 
 // Repour all numbers in the array into the left and right
 // arrays.
@@ -36,7 +36,7 @@ void repour(std::vector<int> list,
 int countleft(std::vector<int> list, int pivot) {
 
   std::cout << "countleft vector ";
-  vectorprint(list);
+  printvector(list);
 
   int left = 0;
   for (int i = 0; i < list.size(); i++) {
@@ -52,7 +52,7 @@ int countleft(std::vector<int> list, int pivot) {
 std::vector<int> quicksort(std::vector<int> list) {
 
   std::cout << "Call ";
-  vectorprint(list);
+  printvector(list);
 
   if (list.size() <= 1) {
     // Do nothing
@@ -68,7 +68,7 @@ std::vector<int> quicksort(std::vector<int> list) {
     }
 
     std::cout << "Case 2 ";
-    vectorprint(list);
+    printvector(list);
     return list;
   }
 
@@ -89,10 +89,10 @@ std::vector<int> quicksort(std::vector<int> list) {
   repour(list, left, right, pivot);
 
   std::cout << "repour left ";
-  vectorprint(left);
+  printvector(left);
 
   std::cout << "repour right ";
-  vectorprint(right);
+  printvector(right);
   
   std::vector<int> qleft = quicksort(left);
   std::vector<int> qright = quicksort(right);
@@ -108,11 +108,11 @@ std::vector<int> quicksort(std::vector<int> list) {
   }
 
   std::cout << "combine left ";
-  vectorprint(qleft);
+  printvector(qleft);
   std::cout << "combine right ";
-  vectorprint(qright);
+  printvector(qright);
   std::cout << "combined ";
-  vectorprint(combined);
+  printvector(combined);
 
   return combined;
 }

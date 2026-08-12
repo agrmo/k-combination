@@ -1,4 +1,4 @@
-#include "Pointervectorprint.h"
+#include "Printpointervector.h"
 #include <vector>
 
 int main() {
@@ -12,11 +12,11 @@ int main() {
     plist -> push_back(&list[i]);
   }
 
-  pointervectorprint(plist); // [6, 7, 8, 9]
+  printpointervector(plist); // [6, 7, 8, 9]
 
   // Now try modifying the "parent" vector.
 
   list[1] = 15;
 
-  pointervectorprint(plist); // [6, 15, 8, 9]
+  printpointervector(plist); // [6, 15, 8, 9]
 }

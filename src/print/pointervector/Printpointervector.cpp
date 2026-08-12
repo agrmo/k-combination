@@ -1,13 +1,9 @@
 #include <iostream>
 #include <vector>
-#include "Vectorprint.h"
+#include "Printpointervector.h"
 
-void vectorprint(std::vector<int>* listptr) {
-  std::vector<int> list = *listptr;
-  vectorprint(list);
-}
-
-void vectorprint(std::vector<int> list) {
+void printpointervector(std::vector<int*>* listptr) {
+  std::vector<int*> list = *listptr;
 
   std::cout << "[";
   
@@ -16,7 +12,7 @@ void vectorprint(std::vector<int> list) {
       std::cout << ", ";
     }
     
-    std::cout << list[i];
+    std::cout << *(list[i]);
   }
 
   std::cout << "]" << std::endl;
