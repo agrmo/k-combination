@@ -25,12 +25,20 @@ void exampletwo() {
   
   printabacus(a);
   
-  Subabacus* sa = truncateterminal(a);
+  Subabacus* saa = truncateterminal(a);
 
-  printsubabacus(sa);
+  printsubabacus(saa);
+
+  saa -> moveright(1);
+
+  printsubabacus(saa);
+
+  // Now the parent abacus should also be modified.
+
+  printabacus(a);
   
   delete a;
-  delete sa;
+  delete saa;
 }
 
 int main() {

@@ -50,7 +50,7 @@ void Subabacus::moveright(int b) {
     throw std::runtime_error("Subabacus: cannot move right.");
   }
 
-  std::cout << "Move bead " << b << " value " << *(beads -> at(b)) << " right.";
+  std::cout << "Move bead " << b << " value " << *(beads -> at(b)) << " right.\n";
 
   *(beads -> at(b)) += 1;
 }
