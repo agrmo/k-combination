@@ -9,15 +9,15 @@ Subabacus* truncateterminal(Abacus* parent) {
   int terminalindex = parent -> beads -> size() - 1;
   int terminal = parent -> beads -> at(terminalindex);
 
-  // The Subabacus size is also terminal.
-  // For clarity.
+  // The terminal value becomes the size of the subabacus.
   int size = terminal;
     
   // Now find the beads from a within size size.  Crucially we are
   // making pointers to the parent Abacus' beads. We don't know the
-  // number of beads within size size yet. Search now.
+  // number of beads within size size yet.
   std::vector<int*>* beads = new std::vector<int*>(0);
 
+  // Count the beads below size.
   for (int i = 0; i < parent -> beads -> size(); i++) {
     if (parent -> beads -> at(i) < size) {
       beads -> push_back(&(parent -> beads -> at(i)));
@@ -28,7 +28,7 @@ Subabacus* truncateterminal(Abacus* parent) {
 
   Subabacus* child = new Subabacus(size, beads, parent -> beads);
 
-  // Note needs delete.
+  // Needs delete.
 
   return child;
 }
@@ -56,13 +56,15 @@ Subabacus* truncateterminal(Subabacus* parent) {
       // bead is fully dereferenced when a Subabacus is created
       // anyway, so I don't think it would make a difference anyway.
       
+      // Two Subabaci can use the same pointer to a bead.
+      
       beads -> push_back(parent -> beads -> at(i));
     }
   }
   
   Subabacus* child = new Subabacus(size, beads, parent -> parentbeads);
 
-  // Note needs delete.
+  // Needs delete.
 
   return child;
 }

@@ -53,10 +53,15 @@ public:
   bool canmoveright(int b);
 
   // Move the bth bead to the right.
+  // Throw an exception if cannot move right.
   void moveright(int b);
 
   // Can the terminal bead move right?
   bool terminalcanmoveright();
+
+  // Move the terminal bead right.
+  // Throw an exception if cannot move right.
+  void moveterminalright();
 };
 
 #endif

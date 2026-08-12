@@ -18,7 +18,7 @@ SET(dirs addone twosum
   comb pairlist
   combinatoric
   abacus subabacus
-  combinationabacus
+  combinatoricabacus
   independentset)
 
 FOREACH(dir ${dirs})
@@ -27,5 +27,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  subabacus/factory/Main.cpp
+  matrix/factory/Main.cpp
 )

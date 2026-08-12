@@ -68,6 +68,10 @@ public:
 
   // Can the terminal bead move right?
   bool terminalcanmoveright();
+
+  // Move the terminal bead right.
+  // Throw an exception if cannot move right.
+  void moveterminalright();
 };
 
 #endif

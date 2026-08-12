@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Combinationabacus.h"
+#include "Combinatoricabacus.h"
 #include "matrix/Matrix.h"
 #include "print/matrix/Printmatrix.h"
 

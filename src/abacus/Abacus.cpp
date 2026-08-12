@@ -60,3 +60,14 @@ bool Abacus::terminalcanmoveright() {
   
   return canmoveright(terminalindex);
 }
+
+void Abacus::moveterminalright() {
+
+  int terminalindex = numberofbeads() - 1;
+
+  if (!canmoveright(terminalindex)) {
+    throw std::runtime_error("Subabacus: cannot move right.");
+  }
+  
+  moveright(terminalindex);
+}

@@ -65,6 +65,7 @@ void examplethree() {
   // Now the parent abacus should also be modified.
 
   printabacus(a);
+  std::cout << "Terminal can move right: " << a -> terminalcanmoveright() << "\n";
   
   delete a;
   delete saa;
