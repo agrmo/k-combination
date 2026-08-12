@@ -18,6 +18,21 @@ void exampleone() {
   delete sa;
 }
 
+void exampletwo() {
+  Abacus* a = new Abacus(5, 3);
+
+  a -> moveright(2);
+  
+  printabacus(a);
+  
+  Subabacus* sa = truncateterminal(a);
+
+  printsubabacus(sa);
+  
+  delete a;
+  delete sa;
+}
+
 int main() {
-  exampleone();
+  exampletwo();
 }

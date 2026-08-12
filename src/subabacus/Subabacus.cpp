@@ -1,4 +1,3 @@
-
 #include "Subabacus.h"
 #include "abacus/Abacus.h"
 #include <iostream>
@@ -50,6 +49,8 @@ void Subabacus::moveright(int b) {
   if (!canmoveright(b)) {
     throw std::runtime_error("Subabacus: cannot move right.");
   }
+
+  std::cout << "Move bead " << b << " value " << *(beads -> at(b)) << " right.";
 
   *(beads -> at(b)) += 1;
 }

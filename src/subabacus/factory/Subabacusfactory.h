@@ -28,6 +28,6 @@ Subabacus* truncateterminal(Abacus* a);
 // Note
 // - The beads do not become pointer pointers (int**). They
 //   will be just int*.
-// Subabacus* truncateterminal(Subabacus* sa);
+Subabacus* truncateterminal(Subabacus* parent);
 
 #endif

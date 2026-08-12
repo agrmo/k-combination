@@ -3,11 +3,11 @@
 #include "Subabacusfactory.h"
 #include <vector>
 
-Subabacus* truncateterminal(Abacus* a) {
+Subabacus* truncateterminal(Abacus* parent) {
   // First find the terminal bead.
   // We know where it is, it's always at the end of beads.
-  int terminalindex = a -> beads -> size() - 1;
-  int terminal = a -> beads -> at(terminalindex);
+  int terminalindex = parent -> beads -> size() - 1;
+  int terminal = parent -> beads -> at(terminalindex);
 
   // The Subabacus size is also terminal.
   // For clarity.
@@ -18,26 +18,51 @@ Subabacus* truncateterminal(Abacus* a) {
   // number of beads within size size yet. Search now.
   std::vector<int*>* beads = new std::vector<int*>(0);
 
-  for (int i = 0; i < a -> beads -> size(); i++) {
-    if (a -> beads -> at(i) < size) {
-      beads -> push_back(&(a -> beads -> at(i)));
+  for (int i = 0; i < parent -> beads -> size(); i++) {
+    if (parent -> beads -> at(i) < size) {
+      beads -> push_back(&(parent -> beads -> at(i)));
     }
   }
 
   // Done. Build the Subabacus.
 
-  Subabacus* sa = new Subabacus(size, beads);
+  Subabacus* child = new Subabacus(size, beads);
 
   // Note needs delete.
 
-  return sa;
+  return child;
 }
 
-// Subabacus* truncateterminal(Subabacus* saa) {
+Subabacus* truncateterminal(Subabacus* parent) {
+
+  // Similar idea, but now we need to dereference the beads.
   
-//   // Done. Build the Subabacus.
+  int terminalindex = parent -> beads -> size() - 1;
+  int terminal = *(parent -> beads -> at(terminalindex));
 
-//   Subabacus* sab = new Subabacus(size, beads);
+  int size = terminal;
 
-//   // Note needs delete.
-// }
+  // Same references, same beads, but one less bead.
+  std::vector<int*>* beads = new std::vector<int*>(0);
+
+  for (int i = 0; i < parent -> beads -> size(); i++) {
+    if (*(parent -> beads -> at(i)) < size) {
+
+      // I think it's okay to use the same pointer.  So I think it's
+      // okay if two Subabaci use the same pointer to one particular
+      // bead. I think the call stack will allow for that because we
+      // don't really care what the subbeads do in one particlar
+      // iteration of the while loop at a particular bead level. The
+      // bead is fully dereferenced when a Subabacus is created
+      // anyway, so I don't think it would make a difference anyway.
+      
+      beads -> push_back(parent -> beads -> at(i));
+    }
+  }
+  
+  Subabacus* child = new Subabacus(size, beads);
+
+  // Note needs delete.
+
+  return child;
+}
