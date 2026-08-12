@@ -23,6 +23,18 @@ void savecombination(Matrixfactory* mf,
   mf -> fillnextrow(beads);
 }
 
+// Interestingly we need to repeat this step in the recursive
+// algorithm twice. No way around it I suppose. We'll just make a
+// function to factor the code a little.
+void subabacuscheckrecursion(Subabacus* subabacusparent,
+			     Matrixfactory* mf) {
+  
+  if (subabacusparent -> numberofbeads() > 1) {
+    Subabacus* subabacuschild = truncateterminal(subabacusparent);
+    
+    subabacusgetcombinations(subabacuschild, mf);
+  }
+}
 
 void subabacusgetcombinations(Subabacus* subabacusparent,
 			      Matrixfactory* mf) {
@@ -32,20 +44,20 @@ void subabacusgetcombinations(Subabacus* subabacusparent,
 
   while (subabacusparent -> terminalcanmoveright()) {
 
-    if (subabacusparent -> numberofbeads() > 1) {
-      Subabacus* subabacuschild = truncateterminal(subabacusparent);
-
-      subabacusgetcombinations(subabacuschild, mf);
-    }
+    // This can recurse.
+    subabacuscheckrecursion(subabacusparent, mf);
 
     // Move right and save.
     subabacusparent -> moveterminalright();
     savecombination(mf, subabacusparent -> parentbeads);
+
+    // This can also recurse.
+    subabacuscheckrecursion(subabacusparent, mf);
   }
 }
 
 // Complexity analysis: O(p!) where p is the size of the set.
-// aka O(n!)
+// In other notation O(n!)
 //
 // More accurately would be
 // O(q*(p choose q)) = O((q*p!)/(q!(p-q)!)))
@@ -66,7 +78,6 @@ Matrix* getcombinations(int p, int q) {
   // The matrix initially has all zero values.
   // We will replace each row as we find new combinations.
   // We will need a variable to keep track of which row we are on.
-  // Next row to populate.
   Matrixfactory mf(pcq, q);
 
   // Build the parent abacus.
@@ -76,21 +87,24 @@ Matrix* getcombinations(int p, int q) {
 
   // Save initial combination.
 
-  // savecombination(mf, parent.beads);
+  savecombination(mf, parent.beads);
 
   // Start the recursive loop.
 
-  // while (parent.terminalcanmoveright()) {
-  //   if (parent.numberofbeads() > 1) {
+  while (parent.terminalcanmoveright()) {
+    if (parent.numberofbeads() > 1) {
 
-  //     Subabacus* sa = truncateterminal(&parent);
+      // Make a new Abacus truncated at the terminal bead.  The
+      // unoccupied locations before the terminal bead are still
+      // included.
+      Subabacus* sa = truncateterminal(&parent);
 
-  //     // Call a recursive algorithm. This function will count the
-  //     // combinations of the smaller abacus and add the combinations
-  //     // to the matrix, while also appending the parent's beads.
-  //     subabacusgetcombinations(sa, matrix);
-  //   }
-  // }
+      // Call a recursive algorithm. This function will count the
+      // combinations of the smaller abacus and add the combinations
+      // to the matrix, while also appending the parent abacus' beads.
+      subabacusgetcombinations(sa, matrix);
+    }
+  }
   
   return mf.matrix;
 }
