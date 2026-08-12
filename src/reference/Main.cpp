@@ -1,6 +1,6 @@
 #include <iostream>
 
-void beispieleins() {
+void exampleone() {
   int a = 1;
   int& b = a;
   b += 1;
@@ -15,5 +15,5 @@ void beispieleins() {
 }
 
 int main() {
-  beispieleins();
+  exampleone();
 }

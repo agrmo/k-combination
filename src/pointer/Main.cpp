@@ -1,19 +1,19 @@
 #include <iostream>
 using namespace std;
 
-void beispieleins() {
+void exampleone() {
   string essen = "Brot";
   cout << essen << endl; // "Brot"
   cout << &essen << endl; // 0x
 }
 
-void beispielzwei() {
+void exampletwo() {
   string essen = "Brot";
   string* zeiger = &essen;
   cout << zeiger << endl; // 0x  
 }
 
-void beispieldrei() {
+void examplethree() {
   int a = 1;
   int& b = a;
   b += 1;
@@ -22,5 +22,5 @@ void beispieldrei() {
 }
 
 int main() {
-  beispieldrei();
+  examplethree();
 }

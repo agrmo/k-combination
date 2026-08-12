@@ -17,8 +17,9 @@ SET(dirs addone twosum
   reference
   comb pairlist
   combinatoric
-  independentset
-  abacus subabacus combinationabacus)
+  abacus subabacus
+  combinationabacus
+  independentset)
 
 FOREACH(dir ${dirs})
     ADD_SUBDIRECTORY(${dir})

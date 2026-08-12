@@ -2,7 +2,7 @@
 #include "Pairlist.h"
 #include "print/pairlist/Printpairlist.h"
 
-void beispieleins() {
+void exampleone() {
   Pairlist a;
 
   a.add(3,4);
@@ -20,7 +20,7 @@ void beispieleins() {
   std::cout << *(p+1) << "\n";
 }
 
-void beispielzwei() {
+void exampletwo() {
   Pairlist a;
 
   a.add(1,2);
@@ -29,7 +29,7 @@ void beispielzwei() {
   printpairlist(&a);
 }
 
-void beispieldrei() {
+void examplethree() {
   Pairlist a;
 
   a.add(1,2);
@@ -41,5 +41,5 @@ void beispieldrei() {
 }
 
 int main() {
-  beispieldrei();
+  examplethree();
 }

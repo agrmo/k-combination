@@ -3,9 +3,9 @@
 #include "matrix/Matrix.h"
 #include "print/matrix/Printmatrix.h"
 
-void beispieleins() {
+void exampleone() {
 }
 
 int main() {
-  beispieleins();
+  exampleone();
 }

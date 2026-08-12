@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Printmatrix.h"
 
-void beispieleins() {
+void exampleone() {
   int m = 3;
   int n = 3;
 
@@ -14,7 +14,7 @@ void beispieleins() {
   printmatrixprimitive(matrix, m, n);
 }
 
-void beispielzwei() {
+void exampletwo() {
   int m = 4;
   int n = 3;
 
@@ -28,7 +28,7 @@ void beispielzwei() {
   printmatrixprimitive(matrix, m, n);
 }
 
-void beispieldrei() {
+void examplethree() {
 
   int m = 4;
   int n = 3;
