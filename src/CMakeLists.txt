@@ -10,8 +10,8 @@ TARGET_INCLUDE_DIRECTORIES(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Add source files.
 SET(dirs addone twosum
-  city ciudad stadt class
-  array vector
+  class array vector
+  city ciudad stadt pueblo
   kette print quicksort swap
   combine graph matrix
   reference
@@ -27,5 +27,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  matrix/factory/Main.cpp
+  pueblo/Main.cpp
 )

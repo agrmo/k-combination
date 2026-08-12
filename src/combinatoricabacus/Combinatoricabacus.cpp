@@ -32,7 +32,7 @@ void subabacuscheckrecursion(Subabacus* subabacusparent,
   if (subabacusparent -> numberofbeads() > 1) {
     Subabacus* subabacuschild = truncateterminal(subabacusparent);
     
-    subabacusgetcombinations(subabacuschild, mf);
+    // subabacusgetcombinations(subabacuschild, mf);
   }
 }
 
@@ -87,7 +87,7 @@ Matrix* getcombinations(int p, int q) {
 
   // Save initial combination.
 
-  savecombination(mf, parent.beads);
+  // savecombination(mf, parent.beads);
 
   // Start the recursive loop.
 
@@ -102,7 +102,7 @@ Matrix* getcombinations(int p, int q) {
       // Call a recursive algorithm. This function will count the
       // combinations of the smaller abacus and add the combinations
       // to the matrix, while also appending the parent abacus' beads.
-      subabacusgetcombinations(sa, matrix);
+      // subabacusgetcombinations(sa, mf);
     }
   }
   
