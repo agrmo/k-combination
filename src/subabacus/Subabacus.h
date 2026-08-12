@@ -12,6 +12,10 @@
 // Using inheritance is not a good idea because the underlying data
 // structure is different: integers vs pointers to integers.
 
+// Using a single class (combining Abacus and Subabacus) is not a good
+// idea because it overcomplicates the parent class. We need Subabacus
+// to have pointers. Abacus doesn't need pointers.
+
 // This kind of data structure is useful for constructing recursive
 // algorithms on subintervals of integers.
 
@@ -50,6 +54,9 @@ public:
 
   // Move the bth bead to the right.
   void moveright(int b);
+
+  // Can the terminal bead move right?
+  bool terminalcanmoveright();
 };
 
 #endif

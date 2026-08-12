@@ -65,6 +65,9 @@ public:
 
   // Move the bth bead to the right.
   void moveright(int b);
+
+  // Can the terminal bead move right?
+  bool terminalcanmoveright();
 };
 
 #endif

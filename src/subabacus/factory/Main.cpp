@@ -41,6 +41,35 @@ void exampletwo() {
   delete saa;
 }
 
+void examplethree() {
+
+  Abacus* a = new Abacus(5, 3);
+
+  std::cout << "Terminal can move right: " << a -> terminalcanmoveright() << "\n";
+  
+  a -> moveright(2);
+  
+  printabacus(a);
+  std::cout << "Terminal can move right: " << a -> terminalcanmoveright() << "\n";
+  
+  Subabacus* saa = truncateterminal(a);
+
+  printsubabacus(saa);
+  std::cout << "Terminal can move right: " << saa -> terminalcanmoveright() << "\n";
+
+  saa -> moveright(1);
+
+  printsubabacus(saa);
+  std::cout << "Terminal can move right: " << saa -> terminalcanmoveright() << "\n";
+
+  // Now the parent abacus should also be modified.
+
+  printabacus(a);
+  
+  delete a;
+  delete saa;
+}
+
 int main() {
-  exampletwo();
+  examplethree();
 }

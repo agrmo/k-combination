@@ -60,3 +60,10 @@ void Subabacus::moveright(int b) {
 
   *(beads -> at(b)) += 1;
 }
+
+bool Subabacus::terminalcanmoveright() {
+
+  int terminalindex = numberofbeads() - 1;
+  
+  return canmoveright(terminalindex);
+}

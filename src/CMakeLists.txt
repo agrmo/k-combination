@@ -27,5 +27,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  combinationabacus/Main.cpp
+  subabacus/factory/Main.cpp
 )

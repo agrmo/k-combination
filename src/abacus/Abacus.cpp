@@ -54,3 +54,9 @@ void Abacus::moveright(int b) {
   beads -> at(b) += 1;
 }
 
+bool Abacus::terminalcanmoveright() {
+
+  int terminalindex = numberofbeads() - 1;
+  
+  return canmoveright(terminalindex);
+}
