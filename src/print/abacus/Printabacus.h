@@ -1,4 +1,4 @@
-#ifndef PRINTABACUS_Ha
+#ifndef PRINTABACUS_H
 #define PRINTABACUS_H
 
 #include "abacus/Abacus.h"

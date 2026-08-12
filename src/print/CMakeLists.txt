@@ -1,6 +1,7 @@
 
 SET(dirs list kette
-  vector pairlist matrix comb
+  vector pointervector
+  pairlist matrix comb
   abacus)
 
 FOREACH(dir ${dirs})

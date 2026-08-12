@@ -22,5 +22,5 @@ ENDFOREACH()
 
 # Add main function.
 TARGET_SOURCES(main PRIVATE
-  abacus/Main.cpp
+  print/pointervector/Main.cpp
 )

@@ -36,6 +36,14 @@
 // in that direction and then does so.
 //
 // Everything is 0 indexed here.
+//
+// Furthermore we want this implementation to be fragmentable. That
+// is, an abacus contains, in theory, smaller abaci within it. We will
+// implement this by using a Subabacus class. This Abacus can create a
+// Subabacus, whose beads are pointers to integers, instead of full
+// integers, that point to the parent Abacus. This is a bit cleaner
+// than making the integers in Abacus pointers, which makes things a
+// bit unclear as to who is a parent and who is a child.
 
 class Abacus {
 
