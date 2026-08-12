@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <vector>
 #include "matrix/Matrix.h"
 #include "combinatoric/Combinatoric.h"
 #include "Combinatoricabacus.h"
