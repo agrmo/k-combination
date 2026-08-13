@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 4.4)
-PROJECT(cpp)
+PROJECT(k-combination)
 
 # Add executable.
 ADD_EXECUTABLE(main)
@@ -9,17 +9,10 @@ ADD_EXECUTABLE(main)
 TARGET_INCLUDE_DIRECTORIES(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Add source files.
-SET(dirs addone twosum
-  class array vector
-  city ciudad stadt pueblo
-  kette print quicksort swap
-  combine graph matrix
-  reference
-  comb pairlist
+SET(dirs print matrix
   combinatoric
   abacus subabacus
-  combinatoricabacus
-  independentset)
+  combinatoricabacus)
 
 FOREACH(dir ${dirs})
     ADD_SUBDIRECTORY(${dir})

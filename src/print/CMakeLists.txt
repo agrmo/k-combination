@@ -1,7 +1,5 @@
-SET(dirs list kette
-  vector pointervector
-  pairlist matrix comb
-  abacus subabacus)
+SET(dirs vector pointervector
+  matrix abacus subabacus)
 
 FOREACH(dir ${dirs})
     ADD_SUBDIRECTORY(${dir})
